@@ -1,0 +1,33 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.dashboardWrapper{
+
+    &__header{
+        margin-bottom: unset;
+        
+        @include tablet{
+            justify-content: center;
+        }
+    }
+
+    &__table{
+
+        &__role{
+            padding: math.div($spacing, 2);
+            border-radius: 3px;
+            @include flex();
+        }
+    
+        &__admin{    
+            color: #ff2e2e;
+            background: rgb(255 230 230);
+        }
+    
+        &__user{    
+            color: #220256;
+            background: #e9dbff;
+        }
+        
+    }
+}

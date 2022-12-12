@@ -1,0 +1,82 @@
+@use '../../scss/abstracts/' as *;
+
+.product-card{
+    width: 200px;
+    background-color: $white;
+    border-radius: $smallBorderRadius;
+    @include transition-ease;
+
+    @include tablet{
+        width: 100px;
+    }
+
+    img{
+        height: 150px;
+        object-fit: cover;
+        border-top-left-radius: $smallBorderRadius;
+        border-top-right-radius: $smallBorderRadius;
+
+        @include tablet{
+            height: 80px;
+        }
+    }
+
+    &__details{
+        padding-left: $spacing;
+        padding-top: $spacing;
+        padding-bottom: $spacing;
+
+        @include tablet{
+            padding-left: $mobileSpacing;
+            padding-top: unset;
+            padding-bottom: $mobileSpacing;
+        }
+
+        p{
+            font-weight: 500;
+            padding-bottom: $mobileSpacing;
+
+            @include tablet{
+                font-size: $fontSizeSmall;
+            }
+        }
+    
+        &__ratings{
+
+            &__reviews{
+                font-size: $fontSizeSmall;
+                color: $gray;
+
+                @include tablet{
+                    font-size: $fontSizeExtraSmall;
+                }
+            }
+        }
+
+        &__price{
+            color: $highlightColor;
+
+            @include tablet{
+                font-size: $fontSizeSmall;
+            }
+        }
+    }
+
+    &:hover{
+        cursor: pointer;
+        transform: translateY(-.5vmax);
+        -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+        -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+        box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+    }
+}
+
+.MuiRating-iconFilled{
+    color: $mainColor;
+}
+
+@include tablet{
+    .MuiRating-sizeMedium{
+        font-size: $fontSizeSmall !important;
+    }
+}

@@ -1,0 +1,56 @@
+@use '../../scss/abstracts/' as *;
+
+
+.tbody {
+    &:last-child{
+        border-top: 1px solid $mainColor;
+    }
+    td {
+        width: 150px;
+        padding: $spacing;
+        text-align: center;
+
+        img {
+            width: 60px;
+        }
+
+    }
+
+    &__actions {
+        @include flex();
+        column-gap: $spacing;
+        padding: $spacing;
+
+        &__remove {
+            padding: $mobileSpacing;
+            font-size: $fontSizeSmall;
+            color: #00bf08;
+            background: #dfffe0;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        &__qty {
+            @include flex();
+
+            &__btn {
+                background: $mainColor;
+                color: $white;
+                cursor: pointer;
+                padding: 3px;
+                outline: none;
+                border: none;
+            }
+
+            &__input {
+                cursor: auto;
+                width: 30px;
+                text-align: center;
+                padding: 3px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}

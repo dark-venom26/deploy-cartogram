@@ -1,0 +1,22 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.home-wrapper{
+    @include flex(stretch, flex-start);
+    width: 100%;
+
+    &__main{
+        padding-left: $spacing;
+        padding-bottom: $spacing;
+        flex: auto;
+        
+        @include tablet{
+            padding-left: unset;
+            padding-bottom: calc($extraSpacing * 12);
+        }
+
+        @include mobile {
+            padding-bottom: calc($extraSpacing * 12);
+        }
+    }
+}

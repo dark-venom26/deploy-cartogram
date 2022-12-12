@@ -1,0 +1,163 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.processOrder {
+    margin-top: $navbarHeight;
+    padding: $spacing;
+    width: 100%;
+
+    &__wrapper {
+        @include flex(flex-start, stretch);
+
+        @include tablet{
+            flex-direction: column;
+        }
+
+        &__shippingDetails {
+            flex: .6;
+
+            &.flex{
+                flex: auto;
+                width: 100%;
+            }
+
+            &__top {
+                margin-bottom: $spacing;
+
+                &__container {
+                    @include flex(flex-start, stretch);
+                    flex-direction: column;
+                    row-gap: math.div($spacing, 2);
+                    padding: $spacing;
+                    background-color: $white;
+                    border-radius: 3px;
+
+                    &__block {
+                        @include flex(flex-start, stretch);
+
+                        &__label {
+                            font-weight: 500;
+                            min-width: 100px;
+                            margin-right: $spacing;
+                        }
+                    }
+                }
+            }
+
+            &__middle {
+                margin-bottom: $spacing;
+
+                &__container {
+                    @include flex(flex-start, stretch);
+                    flex-direction: column;
+                    row-gap: math.div($spacing, 2);
+                    padding: $spacing;
+                    background-color: $white;
+                    border-radius: 3px;
+                    
+                    &__block {
+                        @include flex(center, stretch);
+
+                        &__label {
+                            font-weight: 500;
+                            min-width: 100px;
+                            margin-right: $spacing;
+                        }
+
+                        &__value {
+                            padding: math.div($spacing, 4);
+                            border-radius: 3px;
+
+                            &.green {
+                                color: #00bf08;
+                                background: #dfffe0;
+                            }
+
+                            &.yellow {
+                                color: #eebe3a;
+                                background: #fdf2bf;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            &__bottom {
+                margin-bottom: $spacing;
+
+                &__container {
+                    padding: $spacing;
+                    background-color: $white;
+                    border-radius: 3px;
+                    &__row {
+                        @include flex(center, space-between);
+
+                        &__img {
+                            img {
+                                width: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__processContainer {
+            flex: .5;
+            width: 100%;
+
+            .wrapper {
+                width: 100%;
+                &__title{
+                    width: 100%;
+                    justify-content: center;
+                    max-width: unset;
+                    &__heading{
+                        font-weight: 400;
+                    }
+                }
+                &__form {
+                    width: 100%;
+                    max-width: unset;
+                    &__container{
+                        min-width: unset;
+                        width: 100%;
+                        &__input{
+                            min-width: unset;
+                            width: 100%;
+    
+                        }
+                    }
+                    &__container {
+                        &__input {
+                            select {
+                                width: 100%;
+                                padding: math.div($spacing, 2);
+                                padding-left: $extraSpacing * 2;
+                                font-size: $fontSizeNormal;
+                                outline: none;
+                                border: none;
+                                border-radius: 3px;
+
+                                @include tablet {
+                                    font-size: $fontSizeSmall;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+
+.normal-split {
+    width: 100%;
+    height: 1px;
+    background: $mainColor;
+    opacity: .2;
+}

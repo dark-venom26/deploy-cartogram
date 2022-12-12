@@ -1,0 +1,359 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.wrapper{
+    width: 400px;
+    margin: auto;
+    margin-bottom: $spacing;
+    
+    @include tablet{
+        width: 300px;
+    }
+
+    @include mobile{
+        width: 200px;
+    }
+    
+    
+    &__title{
+        @include flex(stretch, flex-start);
+        max-width: 400px;
+        color: $mainColor;
+        font-size: $fontSizeLarge;
+        overflow-x: hidden;
+
+        @include tablet{
+            max-width: 300px;
+            font-size: $fontSizeMedium;
+        }
+
+        @include mobile{
+            max-width: 200px;
+            font-size: $fontSizeNormal;
+        }
+
+        &__heading-login{
+            min-width: 400px;
+            font-weight: 500;
+            margin-bottom: $spacing;
+            transition: all 0.2s cubic-bezier(.37,.4,.87,.82);
+            
+            @include tablet{
+                max-width: 300px;
+            }
+
+            @include mobile{
+                max-width: 200px;
+            }
+
+
+            &.active{
+                transform: translateX(-100%);
+            }
+        }
+
+        &__heading-register{
+            min-width: 400px;
+            font-weight: 500;
+            margin-bottom: $spacing;
+            transition: all 0.2s cubic-bezier(.37,.4,.87,.82);
+
+            @include tablet{
+                max-width: 300px;
+            }
+
+            @include mobile{
+                max-width: 200px;
+            }
+
+            &.active{
+                transform: translateX(-100%);
+            }
+        }
+    }
+
+    &__slider{
+        width: 100%;
+        transition: all 0.2s cubic-bezier(.37,.4,.87,.82);
+        position: relative;
+        margin-bottom: $spacing;
+        @include flex(stretch, flex-start);
+
+        & > input{
+            display: none;
+        }
+
+        &__label{            
+            &__login{
+                font-size: $fontSizeMedium;
+                color: $mainColor;
+                width: 200px;
+
+                @include tablet{
+                    width: 150px;
+                    font-size: $fontSizeNormal;
+                }
+    
+                @include mobile{
+                    width: 100px;
+                    font-size: $fontSizeSmall;
+                }
+    
+
+                &.active{
+                    color: $gray;
+                }
+            }
+
+            &__register{
+                font-size: $fontSizeMedium;
+                color: $gray;
+                width: 200px;
+
+                @include tablet{
+                    width: 150px;
+                    font-size: $fontSizeNormal;
+                }
+
+                @include mobile{
+                    width: 100px;
+                    font-size: $fontSizeSmall;
+                }
+
+                &.active{
+                    color: $mainColor;
+                }
+            }
+
+        }
+
+        &__tab{
+            background: $mainColor;
+            height: 3px;
+            border-radius: 3px;
+            width: 200px;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            transition: all 0.2s cubic-bezier(.37,.4,.87,.82);
+            
+            @include tablet{
+                width: 150px;
+            }
+
+            @include mobile{
+                width: 100px;
+            }
+
+            &.active{
+                transform: translateX(100%); 
+            }
+        }
+    }
+
+    &__form{
+        @include flex(flex-start, stretch);
+        max-width: 400px;
+        overflow-x: hidden;
+        
+        @include tablet{
+            max-width: 300px;
+        }
+
+        @include mobile{
+            max-width: 200px;
+        }
+
+
+        &__container{
+            @include flex(flex-start, stretch);
+            flex-direction: column;
+            min-width: 400px ;
+            row-gap: math.div($spacing, 2);
+            transition: all 0.2s cubic-bezier(.37,.4,.87,.82);
+            
+            @include tablet{
+                min-width: 300px;
+            }
+
+            @include mobile{
+                min-width: 200px;
+            }
+
+
+            &.login{
+                &.active{
+                    transform: translateX(-100%);
+                }
+            }
+
+            &.register{
+                &.active{
+                    transform: translateX(-100%);
+                }
+            }
+
+            &__input{
+                min-width: 400px ;
+                @include flex();
+                position: relative;
+
+                &__avatar{
+                    padding: 0 !important;
+                    margin: 0;
+
+                    &::file-selector-button{
+                        width: 100%;
+                        cursor: pointer;
+                        margin-left: 10px;
+                        padding: 10px 0;
+                        color: #b5b5c2;
+                        border: none;
+                        background: $white;
+                        border-radius: 3px;
+    
+                        &:hover{
+                            border: none;
+                        }
+                    }
+                }
+
+                &__avatar-preview{
+                    width: 30px;
+                    height: 30px;
+                    padding: 5px;
+                    background-color: $mainColor;
+                    border-radius: 50%;
+
+                    &.active{
+                        padding: unset;
+                        min-width: 30px;
+                        max-width: 30px;
+                        object-fit: cover;
+                    }
+                    
+                    @include tablet{    
+                        width: 25px;
+                        height: 25px;         
+                    }
+                }
+                
+                @include tablet{
+                    min-width: 300px;
+                }
+
+                @include mobile{
+                    min-width: 200px;
+                }
+
+                input{
+                    width: 100%;
+                    padding: math.div($spacing, 2);
+                    font-size: $fontSizeNormal;
+                    outline: none;
+                    border: none;
+                    border-radius: 3px;
+
+                    &::placeholder {
+                        color: #b5b5c2;
+                    }
+
+                    @include tablet{
+                        font-size: $fontSizeSmall;
+                    }
+                }
+
+                &__icon{
+                    position: absolute;
+                    left: 13px;
+                    @include flex();
+                }
+
+                &__payment{
+                    width: 100%;
+                    padding: math.div($spacing, 2);
+                    font-size: $fontSizeNormal;
+                    outline: none;
+                    border: none;
+                    border-radius: 3px;
+                    padding-left: $extraSpacing * 2;
+                    background-color: $white;
+
+                    &::placeholder {
+                        color: #b5b5c2;
+                    }
+
+                    @include tablet{
+                        font-size: $fontSizeSmall;
+                    }
+                }
+
+                &__display{
+                    position: absolute;
+                    right: $mobileSpacing;
+                    cursor: pointer;
+                    @include flex();
+
+                    
+                    @include tablet{                        
+                        .css-i4bv87-MuiSvgIcon-root{
+                            font-size: $fontSizeNormal !important;
+                        }
+                    }
+                }
+                
+            }
+            
+            &__btn{
+                width: 100%;
+                margin-top: $spacing;
+
+                &__button{
+                    border: none;
+                    height: 45px;
+                    font-size: $fontSizeNormal;
+                    font-weight: 500;
+                    padding: math.div($spacing, 2);
+                    width: 100%;
+                    background-color: $mainColor;
+                    color: $white;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    @include flex();
+                    column-gap: math.div($spacing, 4);
+
+                    &:disabled{
+                        cursor: no-drop;
+                        
+                    }
+
+                    @include tablet{
+                        font-size: $fontSizeSmall;
+                        
+                        .css-i4bv87-MuiSvgIcon-root{
+                            font-size: $fontSizeNormal !important;
+                        }
+                    }
+
+                }
+            }
+
+            &__bottom{
+                &__title{
+                    margin-top: math.div($spacing, 3);
+                    font-size: $fontSizeNormal;
+
+                    @include tablet{
+                        font-size: $fontSizeSmall;
+                    }
+
+                    &__link{
+                        color: $mainColor;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

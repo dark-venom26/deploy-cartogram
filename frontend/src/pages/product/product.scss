@@ -1,0 +1,352 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.product{
+    margin: auto;
+
+    
+    &__top{
+        @include flex(stretch, space-around);
+        gap: $spacing;
+
+        @include mobile{
+            justify-content: flex-start;
+            gap: $mobileSpacing;
+            margin-left: $mobileSpacing;
+        }
+
+        &__left{
+
+            &__container{
+                &__carousel{                
+                    width: 300px;
+    
+                    @include tablet{
+                        width: 170px;
+                    }
+                    
+                    &__img{
+                        width: 300px;
+                        object-fit: contain;
+    
+                        @include tablet{
+                            width: 170px;
+                            height: 300px;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    
+        &__right{
+    
+            &__info{
+                @include flex(stretch, flex-start);
+                flex-direction: column;
+                gap: $spacing;
+    
+                @include tablet{
+                    gap: math.div($spacing, 2);
+                }
+    
+                &__1{
+                    padding-bottom: $spacing;
+                    border-bottom: 1px solid $txtColor;
+    
+                    &__name{
+                        font-size: $fontSizeLarge;
+                        font-weight: 600;
+    
+                        @include tablet{
+                            font-size: $fontSizeMedium;
+                        }
+                    }
+    
+                    &__id{
+                        font-size: $fontSizeSmall;
+                        color: $gray;
+                        
+                        @include tablet{
+                            font-size: $fontSizeExtraSmall;
+                        }
+                    }
+                }
+    
+                &__2{
+                    padding-bottom: $spacing;
+                    border-bottom: 1px solid $txtColor;
+    
+                    @include tablet{
+                        padding-bottom: $mobileSpacing;
+                    }
+    
+                    .MuiRating-sizeMedium{
+                        font-size: $fontSizeLarge !important;
+    
+                        @include tablet{
+                            font-size: $fontSizeMedium !important;
+                        }
+                    }
+    
+                    &__reviews{
+                        font-size: $fontSizeNormal;
+    
+                        @include tablet{
+                            font-size: $fontSizeSmall;
+                        }
+                    }
+
+                    &__btn{
+                        padding: math.div($spacing, 4);
+                        font-size: $fontSizeNormal;
+                        font-weight: 500;
+                        outline: none;
+                        background: $mainColor;
+                        color: $white;
+                        cursor: pointer;
+                        border: none;
+                        border-radius: 3px;
+                        margin-right: math.div($spacing, 2);
+                    }
+                }
+    
+                &__3{
+                    @include flex(stretch, flex-start);
+                    flex-direction: column;
+                    gap: $spacing;
+    
+                    @include tablet{
+                        gap: math.div($spacing, 2);
+                    }
+    
+                    &__price{
+                        font-size: $fontSizeMedium;
+                        font-weight: 500;
+                        color: $highlightColor;
+    
+                        @include tablet{
+                            font-size: $fontSizeNormal;
+                        }
+                    }
+    
+                    &__cart{
+                        &__button{
+                            @include flex(stretch, flex-start);
+    
+                                &__left{
+                                    padding: math.div($spacing, 4);
+                                    padding-left: math.div($spacing, 2);
+                                    padding-right: math.div($spacing, 2);
+                                    font-size: $fontSizeMedium;
+                                    font-weight: 600;
+                                    outline: none;
+                                    background: $mainColor;
+                                    color: $white;
+                                    cursor: pointer;
+                                    border: 1px solid $mainColor;
+                                    border-right: none;
+                                    border-top-left-radius: 3px;
+                                    border-bottom-left-radius: 3px;
+                                    @include transition-ease;
+    
+                                    @include tablet{
+                                        font-size: $fontSizeNormal;
+                                    }
+                                }
+    
+                                &__right{
+                                    padding: math.div($spacing, 4);
+                                    padding-left: math.div($spacing, 2);
+                                    padding-right: math.div($spacing, 2);
+                                    font-size: $fontSizeMedium;
+                                    font-weight: 600;
+                                    outline: none;
+                                    background: $mainColor;
+                                    color: $white;
+                                    cursor: pointer;
+                                    border: 1px solid $mainColor;
+                                    border-left: none;
+                                    border-top-right-radius: 3px;
+                                    border-bottom-right-radius: 3px;
+                                    @include transition-ease;   
+    
+                                    @include tablet{
+                                        font-size: $fontSizeNormal;
+                                    }
+                                }
+    
+                            &__input{
+                                padding: math.div($spacing, 4);
+                                font-size: $fontSizeNormal;
+                                width: 40px;
+                                outline: none;
+                                border: none;
+                                text-align: center;
+                                cursor: auto;
+                                
+                                @include tablet{
+                                    font-size: $fontSizeNormal;
+                                }
+                            }
+                        }
+                        
+                        &__add{
+                            margin-top: $spacing;
+                            padding: math.div($spacing, 2);
+                            font-size: $fontSizeMedium;
+                            font-weight: 600;
+                            outline: none;
+                            width: 100%;
+                            background: $white;
+                            color: $mainColor;
+                            cursor: pointer;
+                            border: 1px solid $mainColor;
+                            border-radius: 3px;
+                            @include transition-ease;
+    
+                            &:hover{
+                                background: $mainColor;
+                                color: $white;
+                            }
+
+                            &:disabled{
+                                cursor: not-allowed;
+                            }
+    
+                            @include tablet{
+                                font-size: $fontSizeNormal;
+                            }
+                        }
+                    }
+                }
+    
+                &__4{
+                    &__status{
+                        font-size: $fontSizeNormal;
+                        color: $gray;
+    
+                        &__value{
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+
+    &__bottom{
+        margin-top: $spacing;
+        margin-left: $spacing;
+
+        @include tablet{
+            margin-top: $mobileSpacing;
+            margin-left: $mobileSpacing;
+        }
+
+        &__heading{
+            font-size: $fontSizeMedium;
+            font-weight: 500;
+            margin-bottom: math.div($spacing, 2);
+        }
+
+        &__description{
+            font-size: $fontSizeNormal;
+            
+            @include tablet{
+                font-size: $fontSizeSmall;
+            }
+        }
+
+        &__reviews{            
+            margin: $spacing;
+            margin-left: unset;
+
+            @include tablet{
+                margin-top: $mobileSpacing;
+                margin-right: $mobileSpacing;
+            }
+
+            &__slider{
+                @include flex(stretch, flex-start);
+                gap: $spacing;
+                overflow-x: scroll;
+                scroll-behavior: smooth;
+                width: 100%;
+                padding-bottom: $spacing;
+
+                @include tablet{
+                    padding-bottom: $mobileSpacing;
+                }
+
+                &::-webkit-scrollbar {
+                    visibility: hidden;
+                }
+
+                /* ===== Scrollbar CSS ===== */
+                /* Firefox */
+                scrollbar-width: auto !important;
+                scrollbar-color: #ffffff #ffffff mo !important;
+
+                /* Chrome, Edge, and Safari */
+                &::-webkit-scrollbar {
+                    height: 8px !important;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #ffffff !important;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: $mainColor !important;
+                    border-radius: 10px !important;
+                }
+            }
+
+            &__heading{
+                font-size: $fontSizeMedium;
+                font-weight: 500;
+                margin-bottom: math.div($spacing, 2);
+            }
+
+            &__no-reviews{
+                font-size: $fontSizeNormal;
+            
+                @include tablet{
+                    font-size: $fontSizeSmall;
+                }
+            }
+        }
+    }
+    
+}
+
+.dialogActions{
+    @include flex();
+    column-gap: $spacing;
+
+    &__btn{
+        padding: math.div($spacing, 2);
+        font-size: $fontSizeNormal;
+        font-weight: 500;
+        outline: none;
+        background: $mainColor;
+        color: $white;
+        cursor: pointer;
+        border: none;
+        border-radius: 3px;
+    }
+}
+
+.ratingBtn{
+    margin-top: $spacing;
+}
+
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: $mainColor !important;
+}
+
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after{
+    border-bottom: 2px solid $mainColor !important;
+}

@@ -1,0 +1,28 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.order{
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: $spacing;
+
+    img{
+        width: 50px;
+    }
+
+    &__status{
+        padding: math.div($spacing, 2);
+        border-radius: 3px;
+        @include flex();
+    }
+
+    &__delivered{
+        color: #00bf08;
+        background: #dfffe0;
+    }
+
+    &__processing{
+        color: #eebe3a;
+        background: #fdf2bf;
+    }
+}

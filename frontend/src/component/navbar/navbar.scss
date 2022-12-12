@@ -1,0 +1,272 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+header {
+    @include flex(center, space-between);
+    position: fixed;
+    z-index: 2;  
+    width: 100%;
+    background-color: $mainBg;
+    height: $navbarHeight;
+
+
+    .menu-profile {
+        margin-left: $spacing;
+        position: relative;
+
+        &__icon {
+            background: $mainColor;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            @include flex();
+            cursor: pointer;
+
+            &__user{
+                font-size: $fontSizeMedium;
+                font-weight: 400;
+                color: $white;
+                user-select: none;
+                @include flex();
+
+                &__avatar{
+                    border-radius: 50%;
+                    object-fit: cover;
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+        }
+
+        &__dropdown {
+            visibility: hidden;
+            position: absolute;
+            width: 200px;
+            border-radius: 5px;
+            background-color: $white;
+            -webkit-box-shadow: 2px 0px 25px -15px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 2px 0px 25px -15px rgba(0, 0, 0, 0.75);
+            box-shadow: 2px 0px 25px -15px #000000bf;
+            transform: translateY(10px);
+            transition-property: opacity, visibility;
+            transition-duration: .2s, 0s;
+            transition-delay: 0s, .2s;
+
+            &.active {
+                visibility: visible;
+            }
+
+            &__option {
+                color: $mainColor;
+                @include flex(flex-start, stretch);
+                padding: math.div($spacing, 4);
+
+                &.hide{
+                    display: none;
+                    
+                    @include tablet{
+                        display: flex;
+                    }
+                }
+
+                &:hover {
+                    background-color: $mainColor;
+                    color: $white;
+                    cursor: pointer;
+                    transition-delay: 0s, 0s;
+                }
+
+                &:first-child {
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+
+                &:last-child {
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+
+                &__icon {
+                    @include flex(flex-start, stretch);
+                    padding-left: $spacing;
+                    padding-right: math.div($spacing, 2);
+                    padding: $mobileSpacing $mobileSpacing $mobileSpacing $spacing;
+
+                }
+
+                &__name {
+                    user-select: none;
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+
+    .menu-btn {
+        visibility: hidden;
+        margin-right: calc($spacing * 2);
+        position: relative;
+        height: $spacing;
+        width: 28px;
+        cursor: pointer;
+        @include transition-ease;
+
+        @include tablet {
+            z-index: 9;
+            visibility: visible;
+        }
+
+        &__burger {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            width: 28px;
+            height: 3px;
+            background: $mainColor;
+            border-radius: $borderRadius;
+            @include transition-ease;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -8px;
+                width: 22px;
+                height: 3px;
+                border-radius: $borderRadius;
+                background-color: $mainColor;
+                @include transition-ease;
+
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 8px;
+                width: 18px;
+                height: 3px;
+                border-radius: $borderRadius;
+                background-color: $mainColor;
+                @include transition-ease;
+            }
+
+            &.open {
+                transform: rotate(360deg);
+                background: transparent;
+
+                &::before {
+                    width: 28px;
+                    transform: rotate(45deg) translate(5px, 8px);
+
+                    @include tablet {
+                        background-color: $white;
+                    }
+
+                }
+
+                &::after {
+                    width: 28px;
+                    transform: rotate(-45deg) translate(3px, -7px);
+
+                    @include tablet {
+                        background-color: $white;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .nav {
+        @include flex(center, center);
+        visibility: visible;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0.98;
+
+        @include tablet {
+            @include flex();
+            position: fixed;
+            height: 100vh;
+            background-color: transparent;
+            visibility: hidden;
+            z-index: 8;
+
+            &.open {
+                visibility: visible;
+            }
+        }
+
+        .menu-nav {
+            @include flex(center, flex-end);
+            width: 100%;
+            overflow: hidden;
+            @include transition-ease;
+
+            @include tablet {
+                @include flex(flex-start, center);
+                flex-flow: column wrap;
+                height: 100vh;
+                padding-left: 40%;
+                transform: translateY(-100%);
+                opacity: .85;
+                margin-top: unset;
+
+                &.open {
+                    transform: translateY(0);
+                    background: $mainColor;
+                    color: $white;
+                }
+
+            }
+
+            &__item {
+                padding-right: $extraSpacing;
+
+                &.active>a {
+                    color: $gray;
+                }
+
+                @include tablet {
+                    padding-right: unset;
+                    transform: translateX(100vw);
+                    @include transition-ease;
+
+                    &.open {
+                        transform: translateX(0);
+                    }
+                }
+            }
+
+            &__link {
+                @include flex(center, center);
+                padding: math.div($spacing, 4) 0;
+                gap: 4px;
+
+                &__text {
+                    font-size: $fontSizeNormal;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                }
+
+                &:hover {
+                    color: $gray;
+                }
+
+                @include tablet {
+                    font-size: $fontSizeNormal;
+                    color: $white;
+                }
+            }
+
+        }
+
+    }
+
+
+    @for $i from 1 through 4 {
+        .menu-nav__item:nth-child(#{$i}) {
+            transition-delay: ($i * 0.1s) + 0.15s
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+
+.checkoutSteps{
+    margin-bottom: $extraSpacing * 2;
+
+    &__active{
+        color: $green;
+    }
+
+    &__notActive{
+        color: $gray;
+    }
+}
+
+.MuiStepConnector-line{
+    display: none !important;
+} 
+
+.MuiStepConnector-root{
+    height: 1px !important;
+    background-color: $gray !important;
+}
+
+.MuiStepConnector-alternativeLabel{
+    &.Mui-active,
+    &.Mui-completed{
+        background-color: $green !important;
+    }
+}
+
+.MuiStepLabel-iconContainer {
+    &.Mui-completed{
+        color: $green;
+    }
+} 
+
+.css-qivjh0-MuiStepLabel-label{
+    &.Mui-active, 
+    &.Mui-completed{
+        color: $green !important;
+    }
+}

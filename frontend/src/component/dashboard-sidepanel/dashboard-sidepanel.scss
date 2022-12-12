@@ -1,0 +1,30 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.dashboardSidepanel{
+    &__companyLogo{
+        font-size: $fontSizeMedium;
+        font-weight: 500;
+    }
+
+    &__switcher{
+        margin-top: $spacing;
+
+        &__link{
+            @include flex(center, stretch);
+            padding: math.div($spacing, 2);
+            transition: all .2s ease-in-out;
+            border-radius: 3px;
+
+            &__icon{
+                margin-right: math.div($spacing, 2);
+            }
+
+            &:hover,
+            &.active{
+                background-color: $mainColor;
+                color: $white;
+            }
+        }
+    }
+}

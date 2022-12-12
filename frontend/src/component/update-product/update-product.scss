@@ -1,0 +1,8 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.updateProduct {
+    margin-top: $navbarHeight;
+    padding: $spacing;
+    width: 100%;
+}

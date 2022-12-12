@@ -1,0 +1,68 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.dashboardWrapper{
+    margin-top: $navbarHeight;
+    padding: $spacing;
+    width: 100%;
+
+    &__header{
+        @include flex(flex-start, space-between);
+
+       &.space-around{
+            justify-content: space-between;
+            margin-bottom: $spacing;
+
+       }
+
+
+
+        &__btn{
+            cursor: pointer;
+            outline: none;
+            padding: math.div($spacing, 2);
+            font-weight: 500;
+            font-size: $fontSizeMedium;
+            border-radius: 3px;
+            background-color: $mainColor;
+            color: $white;
+        }
+    }
+
+    &__table{
+        width: 100%;
+        background-color: $white;
+        border-radius: 5px;
+        padding: $spacing;
+        -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+        -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+        box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.05);
+        
+        &__btns{
+            @include flex();
+            column-gap: $mobileSpacing;
+            &__btn{
+                cursor: pointer;
+                border: none;
+                background: $mainColor;
+                outline: none;
+                border-radius: 3px;
+                padding: $mobileSpacing;
+                color: $white;
+                @include flex();
+            }
+        }
+    }
+}
+
+.css-1e2bxag-MuiDataGrid-root{
+    border: none !important;
+}
+
+.MuiDataGrid-cell:focus{
+    outline: none !important;
+}
+
+.css-1e2bxag-MuiDataGrid-root .MuiDataGrid-row.Mui-selected {
+    background-color: unset !important;
+}

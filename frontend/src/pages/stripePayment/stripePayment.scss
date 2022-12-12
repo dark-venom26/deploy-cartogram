@@ -1,0 +1,21 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.stripePayment{
+    .wrapper{
+        &__title{
+            &__heading{
+                font-weight: 400;
+            }
+        }
+        
+        @include tablet{
+            &__title{
+                width: 100%;
+                justify-content: center;
+                max-width: unset;
+                
+            }
+        }
+    }
+}

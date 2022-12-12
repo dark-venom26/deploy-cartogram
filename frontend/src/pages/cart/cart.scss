@@ -1,0 +1,73 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.cart{
+    width: 80%;
+    margin: 0 auto;
+
+    &__heading{
+        text-align: center;
+    }
+
+    &__container{
+        &__item{
+            width: 100%;
+            @include flex(flex-start, stretch);
+            background-color: $white;
+            border-radius: 3px;
+            margin-bottom: $spacing;
+
+            @include tablet{
+                overflow-x: scroll;
+            }
+        
+            &__table{
+                width: 100%;
+                border-collapse: collapse;    
+                &__thead{
+                    tr{
+                        th{
+                            width: 150px;
+                            font-size: $fontSizeNormal;
+                            padding: $spacing;
+                            border-bottom: 1px solid $mainColor;
+                        }
+                    }
+                }
+            }
+        }
+        &__checkout{
+            width: 100%;
+            margin-bottom: $spacing;
+
+            &__btn{
+                width: 50%;
+                margin: 0 auto;
+                background: $mainColor;
+                color: $white;
+                padding: math.div($spacing, 2);
+                font-size: $fontSizeNormal;
+                font-weight: 500;
+                cursor: pointer;
+                outline: none;
+                border: none;
+                @include flex();
+                border-radius: 3px;
+                
+                &__icon{
+                    margin-left: $mobileSpacing;
+                }
+            }
+        }
+    }
+
+    &__no-product{
+        text-align: center;
+        margin-bottom: $spacing;
+        
+        @include mobile{
+            font-size: $fontSizeSmall;
+        }
+    }
+
+}

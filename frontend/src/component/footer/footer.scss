@@ -1,0 +1,78 @@
+@use '../../scss/abstracts/' as *;
+
+.footer{
+    @include flex(stretch, space-around);
+    font-size: $fontSizeNormal;
+    font-weight: 300;
+    color: $mainColor;
+    background-color: $white;
+    z-index: 1;
+    padding: $extraSpacing;
+
+    @include tablet{
+        font-size: $fontSizeSmall;
+        padding: $tabletSpacing;
+    }
+
+    @include mobile{
+        font-size: $fontSizeExtraSmall;
+        padding: $mobileSpacing;
+    }
+
+    &__left{
+        @include flex();
+        flex-direction: column;
+        flex: 1;
+        padding: $tabletSpacing;
+        opacity: .8;
+
+        
+        @include mobile{
+            padding: $mobileSpacing;
+        }
+    }
+
+    &__middle{
+        @include flex();
+        flex-direction: column;
+        flex: 1;
+        padding: $tabletSpacing;
+        opacity: .8;
+
+        @include mobile{
+            padding: $mobileSpacing;
+        }
+
+        &__company-name{
+            font-size: $fontSizeMedium;
+            font-weight: 500;
+
+            @include tablet{
+                font-size: $fontSizeNormal;
+            }
+        }
+    }
+
+    &__right{
+        @include flex();
+        flex-direction: column;
+        flex: 1;
+        padding: $tabletSpacing;
+        opacity: .8;
+        
+        @include mobile{
+            padding: $mobileSpacing;
+        }
+
+        &__follow-us{
+            @include flex();
+            gap: 5px;
+
+            &__icon{
+                &:hover{
+                    color: $gray;
+                }
+            }
+        }
+    }
+}

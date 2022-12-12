@@ -1,0 +1,162 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+
+.home{
+
+    &__searchbar{
+        @include flex(stretch, flex-start);
+
+        &__input{
+            padding: math.div($spacing, 2);
+            font-size: $fontSizeNormal;
+            width: 100%;
+            outline: none;
+            border: none;
+            background: $bodyBg;
+            border-radius: 3px;
+
+            @include tablet{
+                font-size: $fontSizeSmall;
+            }
+        }
+        
+    }
+
+    &__filters{
+        margin-top: math.div($spacing, 2);
+
+        &__heading{
+            font-size: $fontSizeNormal;
+            font-weight: 500;
+            margin-bottom: math.div($spacing, 2);
+            
+            @include tablet{
+                font-size: $fontSizeSmall;
+                margin-bottom: $mobileSpacing;
+            }
+        }
+
+        &__slider{
+            &__inputs{
+                @include flex(flex-start, stretch);
+                gap: math.div($spacing, 4);
+                
+                label{
+                    font-size: $fontSizeSmall;
+                    margin-right: math.div($spacing, 4);
+                }
+                input{
+                    width: 70px;
+                    outline: none;
+                    border: none;
+                    border-bottom: 1px solid $gray;
+                    padding: 2px;
+                    transition: all 0.2s;
+
+                    &:focus{
+                        border-bottom: 1px solid $mainColor;
+                    }
+                }
+            }
+        }
+
+        &__categories{
+            @include flex(stretch, flex-start);
+            flex-direction: column;
+        }
+
+        // Material UI Slider
+        
+        .css-187mznn-MuiSlider-root,
+        .css-exkjcx{
+            color: $mainColor !important;
+            padding-top: math.div($spacing, 2) !important;
+            padding-bottom: 0 !important;       
+
+            @include tablet{
+                height: 2px !important;
+            }
+        }
+
+        .css-eg0mwd-MuiSlider-thumb,
+        .css-7drnjp{
+            width: 15px !important;
+            height: 15px !important;
+
+            @include tablet{
+                width: 10px !important;
+                height: 10px !important;
+            }
+        }
+
+
+        // Material UI Radio Button
+
+        .css-vqmohf-MuiButtonBase-root-MuiRadio-root,
+        .css-1m9pwf3,
+        .css-1a5icme{
+            color: $mainColor;
+            padding: 7px !important;
+            padding-left: 9px !important;
+            
+            @include tablet{
+                padding: 6px !important;
+                padding-left: 9px !important;
+            }
+            
+            &.Mui-checked{
+                color: $mainColor;
+            }
+        }
+
+        .css-11zohuh-MuiSvgIcon-root,
+        .css-1hbvpl3-MuiSvgIcon-root,
+        .css-q8lw68,
+        .css-1u5ei5s,
+        .css-1hhw7if-MuiSvgIcon-root {
+            @include tablet{
+                font-size: $fontSizeSmall !important;
+            }
+        }
+
+        @include tablet{
+            .css-ahj2mt-MuiTypography-root,
+            .css-9l3uo3 {
+                font-size: .8rem !important;
+            }
+        }
+    }
+
+    &__main{
+        width: 100%;
+
+        .infinite-scroll-component__outerdiv{
+            width: 100%;
+        }
+
+        .infinite-scroll-component{
+            @include flex(stretch, flex-start);
+            flex-wrap: wrap;
+            gap: $spacing;
+            overflow: unset !important;
+
+            @include tablet{
+                @include flex();
+            }
+            
+            @include mobile{
+                @include flex();
+            }
+        }
+    }
+
+    &__no-result{
+        @include tablet{
+            text-align: center;
+        }
+        @include mobile{
+            font-size: $fontSizeSmall;
+        }
+    }
+}

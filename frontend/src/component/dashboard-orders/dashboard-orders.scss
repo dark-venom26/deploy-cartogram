@@ -1,0 +1,25 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.dashboardWrapper{
+
+    &__table{
+
+        &__status{
+            padding: math.div($spacing, 2);
+            border-radius: 3px;
+            @include flex();
+        }
+    
+        &__delivered{
+            color: #00bf08;
+            background: #dfffe0;
+        }
+    
+        &__processing{
+            color: #eebe3a;
+            background: #fdf2bf;
+        }
+        
+    }
+}

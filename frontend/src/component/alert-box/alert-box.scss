@@ -1,0 +1,9 @@
+@use '../../scss/abstracts/' as *;
+
+.alert{
+    margin-bottom: $spacing;
+
+    @include tablet{
+        margin-bottom: $mobileSpacing;
+    }
+}

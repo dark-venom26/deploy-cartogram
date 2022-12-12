@@ -1,0 +1,66 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.banner{
+    padding-top: $navbarHeight;
+    background: $white;
+    height: $bannerHeight;
+    position: relative;
+
+    @include tablet{
+        height: math.div($bannerHeight, 2);
+    }
+
+    .heading{
+        @include flex();
+        flex-direction: column;
+        
+        &__company-name{
+            font-size: $fontSizeExtraLarge;
+            font-weight: 600;
+            z-index: 1;
+
+            @include tablet{
+                font-size: $fontSizeLarge;
+            }
+            
+            @include mobile{
+                font-size: $fontSizeMedium;
+            }
+
+        }
+        
+        &__info{
+            font-size: $fontSizeMedium;
+            font-weight: 500;
+            z-index: 1;
+
+            @include tablet{
+                font-size: $fontSizeNormal;
+            }
+
+            @include mobile{
+                font-size: $fontSizeSmall;
+            }
+        }
+    }
+}
+
+
+.banner::after{
+    content: "";
+    width: 100vw;
+    height: 100vmin;
+    background: $bodyBg;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    opacity: .9;
+    clip-path: polygon(0 60%, 0 100%, 100% 100%);
+
+    @include tablet{
+        clip-path: polygon(0 85%, 0 100%, 100% 100%);
+    }
+}

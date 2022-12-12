@@ -1,0 +1,19 @@
+@use '../../scss/abstracts/' as *;
+
+.dashboardLayout{
+    @include flex(flex-start, stretch);
+
+    &__sidePanel{
+        position: sticky;
+        top: $navbarHeight;
+        height: calc(100vh - $navbarHeight);
+
+        @include tablet{
+            z-index: 7;
+        }
+    }
+
+    &__mainPanel{
+        width: 100%;
+    }
+}

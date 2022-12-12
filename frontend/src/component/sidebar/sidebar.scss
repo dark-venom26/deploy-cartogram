@@ -1,0 +1,68 @@
+@use '../../scss/abstracts/' as *;
+@use 'sass:math';
+
+.sidebar-background{
+
+    &__blur{
+        @include tablet{
+            &.open{
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background: $mainColor;
+                opacity: .5;
+                z-index: 6;
+                @include transition-ease;
+
+            }
+        }
+    }
+    
+}
+
+.sidebar{
+    width: $sidebarWidth;
+    padding: $spacing;
+    background: $white;
+    border-radius: 0 $borderRadius $borderRadius 0;
+    position: sticky;
+    top: $navbarHeight;
+    height: 100%;
+
+    @include tablet{
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 7;
+        opacity: .5;
+        @include transition-ease;
+
+        &__handle{
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: $spacing;
+            border-radius: 0 $borderRadius $borderRadius 0;
+            @include flex();
+
+            &__bar{
+                background: $mainColor;
+                border-radius: $borderRadius;
+                width: 5px;
+                height: 80px;
+                cursor: pointer;
+            }
+        }
+
+        &.open{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        
+        transform: translateX(-100%);
+    }
+}

@@ -1,0 +1,29 @@
+@use './variables' as *;
+
+@mixin flex($alignItem: center, $justifyContent: center){
+    display: flex;
+    align-items: $alignItem;
+    justify-content: $justifyContent;
+}
+
+@mixin transition-ease{
+    transition: all 0.5s ease-in-out;
+}
+
+@mixin mobile{
+    @media screen and (max-width: $mobile-width) {
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media screen and (max-width: $tablet-width){
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media screen and (max-width: $desktop-width){
+        @content;
+    }
+}

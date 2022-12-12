@@ -1,0 +1,33 @@
+@use '../../scss/abstracts/' as *;
+
+.loader{
+    padding-bottom: $spacing;
+    width: 100%;
+    @include flex();
+
+    div{
+        width: 5vmax;
+        height: 5vmax;
+        border-bottom: 2px solid $mainColor;
+        border-radius: 50%;
+        
+        animation: loadingRotate 800ms linear infinite;
+    }
+}
+
+.small{
+    width: unset;
+    padding-bottom: unset;
+
+    div{
+        width: 1.5vmax;
+        height: 1.5vmax;
+        border-bottom: 2px solid $white;
+    }
+}
+
+@keyframes loadingRotate{
+    to{
+        transform: rotateZ(360deg);
+    }
+}
