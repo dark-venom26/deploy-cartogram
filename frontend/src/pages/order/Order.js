@@ -16,17 +16,29 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, myOrders } from '../../redux/actions/orderAction';
 import Loader from '../../component/loader/Loader';
+import { ORDER_CANCEL_FAIL, ORDER_CANCEL_REQUEST, ORDER_CANCEL_RESET, ORDER_CANCEL_SUCCESS } from '../../redux/constants/orderConstants';
+import axios from 'axios';
 
 function Order() {
   const dispatch = useDispatch();
   const { loading, error, orders } = useSelector((state) => state.myOrders);
+  const { loading:loadingOrderCancel, error:errorOrderCancel, isCancel } = useSelector((state) => state.orderCancel);
 
   useEffect(() => {
-    if (error) {
-      clearErrors();
+
+    dispatch(myOrders()); 
+
+    if (error || errorOrderCancel) {
+      dispatch(clearErrors());
     }
-    dispatch(myOrders());
-  }, [dispatch, error])
+    return () => {
+
+      if (isCancel) {
+        dispatch({ type: ORDER_CANCEL_RESET });
+      }
+    }
+    // eslint-disable-next-line
+  }, [dispatch, error, errorOrderCancel])
 
 
   function createData(orderId, status, itemsQty, amount, shippingAddress, orderItems) {
@@ -58,12 +70,16 @@ function Order() {
     createData(item._id, item.orderStatus, item.orderItems.length, item.totalPrice, `${item.shippingInfo.address}, ${item.shippingInfo.city}, ${item.shippingInfo.state}, ${item.shippingInfo.country}`, item.orderItems)
   ));
 
-
   return (
     <div className='order'>
       <div className="order__heading heading txt-center">My Orders</div>
       {
-        loading ? <Loader /> :
+        loading || loadingOrderCancel ? <Loader /> :
+          rows?.length === 0 ?
+          <>
+            <div className="split"></div>
+            <div className='order__no'>You didn't order anything yet</div>
+          </> :
           <TableContainer component={Paper}>
             <Table aria-label="collapsible table">
               <TableHead>
@@ -74,6 +90,7 @@ function Order() {
                   <TableCell align="right">Item Qty</TableCell>
                   <TableCell align="right">Amount</TableCell>
                   <TableCell align="right">Shipping Address</TableCell>
+                  <TableCell align="right">Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -94,6 +111,26 @@ export default Order
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleCancelOrder = async (id) => {
+    
+    try {
+      dispatch({type: ORDER_CANCEL_REQUEST})
+
+      const {data} = await axios.delete(`/api/v1/order/${id}`);
+
+      dispatch({type: ORDER_CANCEL_SUCCESS, payload: data.success})
+
+      dispatch(myOrders()); 
+
+  } catch (error) {
+      dispatch({
+          type: ORDER_CANCEL_FAIL,
+          payload: error.response.data.message
+      })
+  }
+  }
 
   return (
     <>
@@ -114,6 +151,7 @@ function Row(props) {
         <TableCell align="right">{row.itemsQty}</TableCell>
         <TableCell align="right">₹{row.amount}</TableCell>
         <TableCell align="right">{row.shippingAddress}</TableCell>
+        <TableCell align="right"><button onClick={() => handleCancelOrder(row.orderId)} className="order__cancel">Cancel Order</button></TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

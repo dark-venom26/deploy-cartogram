@@ -8,6 +8,10 @@ import {
     ORDER_DETAILS_REQUEST,
     ORDER_DETAILS_SUCCESS,
     ORDER_DETAILS_FAIL,
+    ORDER_CANCEL_REQUEST,
+    ORDER_CANCEL_SUCCESS,
+    ORDER_CANCEL_RESET,
+    ORDER_CANCEL_FAIL,
     ALL_ORDERS_REQUEST,
     ALL_ORDERS_SUCCESS,
     ALL_ORDERS_FAIL,
@@ -94,6 +98,37 @@ export const orderDetailsReducer = (state = {order: {}}, {type, payload})=> {
             return{
                 loading: false,
                 error: payload
+            };
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                error: null
+            }
+        default:
+            return state;
+    }
+}
+
+export const orderCancelReducer = (state = {}, {type, payload})=> {
+    switch(type){
+        case ORDER_CANCEL_REQUEST:
+            return{
+                loading: true,
+            };
+        case ORDER_CANCEL_SUCCESS:
+            return{
+                loading: false,
+                isCancel: payload
+            };
+        case ORDER_CANCEL_FAIL:
+            return{
+                loading: false,
+                error: payload
+            };
+        case ORDER_CANCEL_RESET:
+            return{
+                ...state,
+                isCancel: false
             };
         case CLEAR_ERRORS:
             return{

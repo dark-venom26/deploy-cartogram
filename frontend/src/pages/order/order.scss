@@ -6,6 +6,26 @@
     margin: 0 auto;
     margin-bottom: $spacing;
 
+    &__cancel{
+        padding: math.div($spacing, 2);
+        border-radius: 3px;
+        @include flex();
+        color: #ff2e2e;
+        background: rgb(255 230 230);
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    &__no{
+        text-align: center;
+        margin-bottom: $spacing;
+        
+        @include mobile{
+            font-size: $fontSizeSmall;
+        }
+    }
+
     img{
         width: 50px;
     }

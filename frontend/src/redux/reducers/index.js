@@ -4,7 +4,7 @@ import {allTodaysUsersReducer, allUsersReducer, passwordReducer, updateUserReduc
 import {toggleSidebarReducer} from './toggleSidebarReducer';
 import { profileReducer } from './profileReducer';
 import { cartReducer } from './cartReducer';
-import { allOrdersReducer, allTodaysOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from './orderReducer';
+import { allOrdersReducer, allTodaysOrdersReducer, myOrdersReducer, newOrderReducer, orderCancelReducer, orderDetailsReducer, orderReducer } from './orderReducer';
 
 const reducers = combineReducers({
     products: productsReducer,
@@ -23,6 +23,7 @@ const reducers = combineReducers({
     allTodaysOrders: allTodaysOrdersReducer,
     orderDetails: orderDetailsReducer,
     order: orderReducer,
+    orderCancel: orderCancelReducer,
     allUsers: allUsersReducer,
     allTodaysUsers: allTodaysUsersReducer,
     userDetails: userDetailsReducer,
