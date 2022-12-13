@@ -36,7 +36,7 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT;
 
-const server = app.listen(port, ()=>{
+const server = app.listen(process.env.PORT||4000, ()=>{
     console.log(`Server is working on http://localhost:${port}`);
 })
 
