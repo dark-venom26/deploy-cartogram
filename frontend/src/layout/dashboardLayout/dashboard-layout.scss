@@ -6,8 +6,9 @@
     &__sidePanel{
         position: sticky;
         top: $navbarHeight;
-        height: calc(100vh - $navbarHeight);
-
+        height: 100vh;
+        margin-top: 70px;
+        
         @include tablet{
             z-index: 7;
         }

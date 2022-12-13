@@ -16,11 +16,8 @@
             background-color: $white;
             border-radius: 3px;
             margin-bottom: $spacing;
+            overflow-x: scroll;
 
-            @include tablet{
-                overflow-x: scroll;
-            }
-        
             &__table{
                 width: 100%;
                 border-collapse: collapse;    
