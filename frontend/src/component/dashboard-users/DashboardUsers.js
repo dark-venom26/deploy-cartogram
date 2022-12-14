@@ -60,7 +60,7 @@ function DashboardUsers() {
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'role', headerName: 'Role', width: 100, renderCell: (params) => {
       return (
-        <div className={params.row.role === "admin" ? "dashboardWrapper__table__role dashboardWrapper__table__admin" : "dashboardWrapper__table__role dashboardWrapper__table__user"}>{params.row.role}</div>
+        <div className={params.row.role === "Owner" ? "dashboardWrapper__table__role dashboardWrapper__table__owner" : params.row.role === "Admin" ? "dashboardWrapper__table__role dashboardWrapper__table__admin" : "dashboardWrapper__table__role dashboardWrapper__table__user"}>{params.row.role}</div>
       )
     }},
     {
@@ -68,8 +68,8 @@ function DashboardUsers() {
         return (
           <>
             <div className="dashboardWrapper__table__btns">
-              <Link className='dashboardWrapper__table__btns__btn' to={`/admin/user/${params.row.id}`}><EditOutlinedIcon /></Link>
-              <button className='dashboardWrapper__table__btns__btn' onClick={() => handleDeleteUser(params.row.id)}><DeleteOutlineOutlinedIcon /></button>
+              <Link className={params.row.role === "Owner" ? 'dashboardWrapper__table__btns__btn disabled' : 'dashboardWrapper__table__btns__btn'} aria-disabled={params.row.role === "Owner"} to={`/admin/user/${params.row.id}`}><EditOutlinedIcon /></Link>
+              <button disabled={params.row.role === "Owner"} className='dashboardWrapper__table__btns__btn' onClick={() => handleDeleteUser(params.row.id)}><DeleteOutlineOutlinedIcon /></button>
             </div>
           </>
         )

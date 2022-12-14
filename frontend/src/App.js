@@ -82,7 +82,7 @@ function App() {
             }
             <Route path="*" element={<NotFound/>} />
           </Route>
-          <Route path='/admin' element={isAuthenticated && user.role==="admin" ? <DashboardLayout/> : <Navigate to="/"/>}>
+          <Route path='/admin' element={isAuthenticated && (user.role === 'Admin' || user.role === 'Owner') ? <DashboardLayout/> : <Navigate to="/"/>}>
             <Route index element={<Dashboard/>} />
             <Route path='product' element={<NewProduct/>} />
             <Route path='product/:productId' element={<UpdateProduct/>} />

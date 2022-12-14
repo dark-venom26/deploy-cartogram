@@ -13,10 +13,11 @@ exports.registerUser = catchAsyncErrors(async (req, res, next)=>{
 
     if(file){
         
-        const myCloud = await cloudinary.uploader.upload(file, {
+        const myCloud = await cloudinary.uploader.upload_large(file, {
             upload_preset: "avatars",
             width: 150,
             crop: "scale",
+            chunk_size: 6000000
         })
 
         var user = await User.create({
@@ -186,12 +187,12 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next)=>{
         const user = await User.findById(req.user.id);
         const imageId = user.avatar.public_id;
         await cloudinary.uploader.destroy(imageId);
-
         
-        const myCloud = await cloudinary.uploader.upload(file, {
+        const myCloud = await cloudinary.uploader.upload_large(file, {
             upload_preset: "avatars",
             width: 150,
             crop: "scale",
+            chunk_size: 6000000
         })
 
         newUserData.avatar = {

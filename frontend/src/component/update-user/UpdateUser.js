@@ -103,8 +103,8 @@ function UpdateUser() {
                                 <div className="wrapper__form__container__input__icon"><VerifiedUserOutlinedIcon /></div>
                                 <select value={role} onChange={(e) => setRole(e.target.value)} required>
                                     <option value="">Choose role</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="user">User</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="User">User</option>
                                 </select>
                             </div>
                             <div className="wrapper__form__container__btn">

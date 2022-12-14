@@ -30,13 +30,18 @@ function Profile() {
   const handleSaveChanges = () => {
     setToggleProfile(true)
 
-    const myForm = new FormData();
-
-    myForm.set("name", name);
-    myForm.set("email", email);
-    if (avatar) {
-      myForm.set("avatar", avatar);
+    var myForm = {
+      "name": name,
+      "email": email
     }
+
+    if (avatar) {
+      myForm = {
+        ...myForm,
+        "avatar": avatar
+      }
+    }
+
     dispatch({ type: UPDATE_PROFILE_RESET });
     dispatch(updateProfile(myForm));
     dispatch(loadUser(true))

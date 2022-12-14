@@ -41,17 +41,14 @@ function NewProduct() {
     const handleProductSubmit = (e) => {
         e.preventDefault();
 
-        const myForm = new FormData();
-
-        myForm.set("name", name);
-        myForm.set("price", price);
-        myForm.set("description", description);
-        myForm.set("category", category);
-        myForm.set("stock", stock);
-
-        productsImg.forEach((image)=>{
-            myForm.append("images", image)
-        })
+        const myForm = {
+            "name" : name,
+            "price" : price,
+            "description" : description,
+            "category" : category,
+            "stock" : stock,
+            "images" : productsImg,
+        }
 
         dispatch(createProduct(myForm))
 

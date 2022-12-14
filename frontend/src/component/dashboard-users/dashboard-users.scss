@@ -19,15 +19,32 @@
             @include flex();
         }
     
-        &__admin{    
+        &__owner{    
             color: #ff2e2e;
             background: rgb(255 230 230);
         }
     
+        &__admin{    
+            color: #00bf08;
+            background: #dfffe0;
+        }
+    
         &__user{    
-            color: #220256;
-            background: #e9dbff;
+            color: #b38f2d;
+            background: #f8f3e4;
         }
         
+        &__btns{
+            &__btn{
+                &:disabled,
+                &.disabled{
+                    cursor: not-allowed;
+                }
+            }
+        }
     }
+}
+
+a[aria-disabled="true"] {
+    pointer-events: none;
 }

@@ -8,8 +8,8 @@ const cloudinary = require('cloudinary').v2;
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     let images = [];
 
-    if(Array.isArray(req.body?.images)){
-        images = req.body?.images;
+    if(Array.isArray(req.body.images)){
+        images = req.body.images;
     }else{
         images.push(req.body.images)
     }
@@ -17,10 +17,11 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     let imagesLink = [];
 
     for (let i = 0; i < images.length; i++) {
-        const result = await cloudinary.uploader.upload(images[i], {
+        const result = await cloudinary.uploader.upload_large(images[i], {
             upload_preset: "products",
             width: 350,
             crop: "scale",
+            chunk_size: 6000000
         })
 
         imagesLink.push({
@@ -28,6 +29,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
             url: result.secure_url
         })
     }
+
 
     req.body.user = req.user.id;
     req.body.images = imagesLink;
@@ -118,10 +120,11 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
         // Upload new product images
         for (let i = 0; i < images.length; i++) {
-            const result = await cloudinary.uploader.upload(images[i], {
+            const result = await cloudinary.uploader.upload_large(images[i], {
                 upload_preset: "products",
                 width: 350,
                 crop: "scale",
+                chunk_size: 6000000
             })
 
             imagesLink.push({

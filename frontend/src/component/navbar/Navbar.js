@@ -63,7 +63,7 @@ function Navbar({user , isAuthenticated}) {
     {authentication: isAuthenticated, link: "", name: "Logout", classes: "menu-profile__dropdown__option", icon: <LogoutIcon />, func: handleLogout },
   ]
 
-  if(isAuthenticated && user.role === 'admin'){
+  if(isAuthenticated && (user.role === 'Admin' || user.role === 'Owner') ){
     profileDropdownOption.unshift(
       {authentication: isAuthenticated, link: "/admin", name: "Dashboard", classes: "menu-profile__dropdown__option", icon: <DashboardOutlinedIcon />, func: handleDropdown }
     );

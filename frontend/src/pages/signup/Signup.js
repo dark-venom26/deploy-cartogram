@@ -82,12 +82,12 @@ function Signup() {
         
         if(password === confirmPassword){
 
-            const myForm = new FormData();
-
-            myForm.set("name", name);
-            myForm.set("email", email);
-            myForm.set("password", password);
-            myForm.set("avatar", avatar);
+            const myForm = {
+                "name": name,
+                "email": email,
+                "password": password,
+                "avatar": avatar,
+            }
             
             dispatch(register(myForm));
 

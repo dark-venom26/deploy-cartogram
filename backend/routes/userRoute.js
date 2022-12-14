@@ -11,8 +11,8 @@ router.route("/password/reset/:token").put(resetPassword);
 router.route("/me").get(isAuthenticatedUser, getUserDetails)
 router.route("/password/update").put(isAuthenticatedUser, updatePassword);
 router.route("/me/update").put(isAuthenticatedUser, updateProfile);
-router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("admin") , getAllUser);
-router.route("/admin/users/today").get(isAuthenticatedUser, authorizeRoles("admin") , getAllTodaysUser);
-router.route("/admin/user/:id").get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser).put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
+router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("Owner","Admin") , getAllUser);
+router.route("/admin/users/today").get(isAuthenticatedUser, authorizeRoles("Owner","Admin") , getAllTodaysUser);
+router.route("/admin/user/:id").get(isAuthenticatedUser, authorizeRoles("Owner","Admin"), getSingleUser).put(isAuthenticatedUser, authorizeRoles("Owner","Admin"), updateUserRole).delete(isAuthenticatedUser, authorizeRoles("Owner","Admin"), deleteUser);
 
 module.exports = router;
