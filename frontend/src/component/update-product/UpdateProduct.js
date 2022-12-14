@@ -51,6 +51,7 @@ function UpdateProduct() {
                 setCategory(data.product.category);
                 setStock(data.product.stock);
                 setOldProductsImg(data.product.images);
+                setProductsImgPreview([])
             } catch (error) {
                 dispatch({
                     type: PRODUCT_DETAILS_FAIL,
