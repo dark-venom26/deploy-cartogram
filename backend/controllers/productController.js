@@ -102,10 +102,10 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     if(Array.isArray(req.files?.images)){
         images = req.files?.images;
     }else{
-        images.push(req.files.images)
+        images.push(req.files?.images)
     }
 
-    if (images !== undefined && images !== null) {
+    if (images && images?.length > 0) {
         // Delete all previous product images
         for (let i = 0; i < product.images.length; i++) {
             await cloudinary.uploader.destroy(product.images[i].public_id);
