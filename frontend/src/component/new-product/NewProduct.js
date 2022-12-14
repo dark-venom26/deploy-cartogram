@@ -67,9 +67,21 @@ function NewProduct() {
     const productFileChoose = (e) => {
         const files = Array.from(e.target.files);
 
+        setProductsImg([]);
+        setProductsImgPreview([]);
+
         if (files) {
-            setProductsImg(files);
-            setProductsImgPreview(files);
+            files.forEach((file) =>{
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onloadend = () => {
+                    if(reader.readyState === 2){
+                        setProductsImg((old)=> [...old, reader.result]);
+                        setProductsImgPreview((old)=> [...old, reader.result]);
+                    }
+                }
+            })
         } else {
             setProductsImg([]);
             setProductsImgPreview([]);
@@ -124,7 +136,7 @@ function NewProduct() {
                             <div className="wrapper__form__container__input__productPreview">
                                 {
                                     productsImgPreview.map((file, index) =>(
-                                        <img key={index} src={URL.createObjectURL(file)} alt="Product Preview" />
+                                        <img key={index} src={file} alt="Product Preview" />
                                     ))
                                 }
                             </div>

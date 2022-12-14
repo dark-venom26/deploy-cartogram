@@ -89,7 +89,7 @@ function UpdatePassword() {
               <button className="wrapper__form__container__btn__button" disabled={updating}>{updating ? <Loader small={true} /> : "Update Password"}</button>
             </div>
             <div className="wrapper__form__container__bottom">
-              <p className="wrapper__form__container__bottom__title"><div>Already know password?</div><Link to="/account" className='wrapper__form__container__bottom__title__link'>View Profile</Link></p>
+              <p className="wrapper__form__container__bottom__title"><span>Already know password?</span><Link to="/account" className='wrapper__form__container__bottom__title__link'>View Profile</Link></p>
             </div>
           </form>
         </div>

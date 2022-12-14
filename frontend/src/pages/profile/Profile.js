@@ -8,8 +8,6 @@ import AlertBox from '../../component/alert-box/AlertBox';
 import { UPDATE_PROFILE_RESET } from '../../redux/constants/profileConstants';
 import { loadUser } from '../../redux/actions/userAction';
 
-
-
 function Profile() {
   const dispatch = useDispatch();
   const { loading, user } = useSelector((state) => state.user);
@@ -17,7 +15,7 @@ function Profile() {
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
-  const [avatar, setAvatar] = useState()
+  const [avatar, setAvatar] = useState("")
 
   const [toggleProfile, setToggleProfile] = useState(true)
 
@@ -52,10 +50,15 @@ function Profile() {
     const file = e.target.files[0]
 
     if (file) {
-      setAvatar(file);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+
+      reader.onloadend = () => {
+        setAvatar(reader.result);
+      }
       setToggleProfile(false)
     } else {
-      setAvatar();
+      setAvatar("");
     }
   }
 
@@ -65,7 +68,7 @@ function Profile() {
         <div className="profile__left">
           <div className="profile__left__container">
             <div className="profile__left__container__img">
-              <img src={avatar ? URL.createObjectURL(avatar) : user.avatar.url} alt="Avatar" />
+              <img src={avatar ? avatar : user.avatar.url} alt="Avatar" />
               <label htmlFor="profileImg" className='profile__left__container__img__btn'>Choose Image</label>
               <input type="file" accept="image/*" id='profileImg' onChange={changeImg} className="profile__left__container__img__inp" />
             </div>

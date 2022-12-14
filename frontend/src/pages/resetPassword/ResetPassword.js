@@ -69,7 +69,7 @@ function ResetPassword() {
               "Reset Password"}</button>
           </div>
           <div className="wrapper__form__container__bottom">
-            <p className="wrapper__form__container__bottom__title"><div>Already know password?</div><Link to="/signup" className='wrapper__form__container__bottom__title__link'>Sign up</Link></p>
+            <p className="wrapper__form__container__bottom__title"><span>Already know password?</span><Link to="/signup" className='wrapper__form__container__bottom__title__link'>Sign up</Link></p>
           </div>
         </form>
       </div>

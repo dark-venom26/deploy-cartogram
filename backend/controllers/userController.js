@@ -8,12 +8,12 @@ const cloudinary = require('cloudinary').v2;
 
 // Register a user
 exports.registerUser = catchAsyncErrors(async (req, res, next)=>{
-    const file = req.files?.avatar;
+    const file = req.body?.avatar;
     const {name, email, password} = req.body;
 
     if(file){
         
-        const myCloud = await cloudinary.uploader.upload(file.tempFilePath, {
+        const myCloud = await cloudinary.uploader.upload(file, {
             upload_preset: "avatars",
             width: 150,
             crop: "scale",
@@ -180,7 +180,7 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next)=>{
         email: req.body.email,
     };
 
-    const file = req.files?.avatar;
+    const file = req.body?.avatar;
 
     if(file){
         const user = await User.findById(req.user.id);
@@ -188,7 +188,7 @@ exports.updateProfile = catchAsyncErrors(async(req,res,next)=>{
         await cloudinary.uploader.destroy(imageId);
 
         
-        const myCloud = await cloudinary.uploader.upload(file.tempFilePath, {
+        const myCloud = await cloudinary.uploader.upload(file, {
             upload_preset: "avatars",
             width: 150,
             crop: "scale",

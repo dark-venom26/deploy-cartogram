@@ -94,9 +94,18 @@ function UpdateProduct() {
         const files = Array.from(e.target.files);
 
         if (files) {
-            setProductsImg(files);
-            setProductsImgPreview(files);
-            setOldProductsImg([])
+            files.forEach((file) =>{
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onloadend = () => {
+                    if(reader.readyState === 2){
+                        setProductsImg((old)=> [...old, reader.result]);
+                        setProductsImgPreview((old)=> [...old, reader.result]);
+                        setOldProductsImg([])
+                    }
+                }
+            })
         } else {
             setProductsImg([]);
             setProductsImgPreview([]);
@@ -160,7 +169,7 @@ function UpdateProduct() {
                                 <div className="wrapper__form__container__input__productPreview">
                                     {
                                         productsImgPreview.map((file, index) => (
-                                            <img key={index} src={URL.createObjectURL(file)} alt="Product Preview" />
+                                            <img key={index} src={file} alt="Product Preview" />
                                         ))
                                     }
                                 </div>
@@ -171,7 +180,7 @@ function UpdateProduct() {
                                 </button>
                             </div>
                             <div className="wrapper__form__container__bottom">
-                                <p className="wrapper__form__container__bottom__title"><div>View Products</div><Link to="/admin/products" className='wrapper__form__container__bottom__title__link'><ArrowForwardOutlinedIcon className='wrapper__form__container__bottom__title__link__icon' /></Link></p>
+                                <p className="wrapper__form__container__bottom__title"><span>View Products</span><Link to="/admin/products" className='wrapper__form__container__bottom__title__link'><ArrowForwardOutlinedIcon className='wrapper__form__container__bottom__title__link__icon' /></Link></p>
                             </div>
                         </form>
                     </div>

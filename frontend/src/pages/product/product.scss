@@ -341,6 +341,15 @@
 
 .ratingBtn{
     margin-top: $spacing;
+    
+    .MuiRating-sizeMedium{
+        font-size: $fontSizeLarge !important;
+
+        @include tablet{
+            font-size: $fontSizeMedium !important;
+        }
+    }
+
 }
 
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{

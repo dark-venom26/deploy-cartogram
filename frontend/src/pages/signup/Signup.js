@@ -119,8 +119,13 @@ function Signup() {
         if(e.target.name === "avatar"){
             const file = e.target.files[0]
             if(file){
-                setAvatarPreview(URL.createObjectURL(file));
-                setAvatar(file);
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onloadend = () => {
+                    setAvatarPreview(reader.result);
+                    setAvatar(reader.result);
+                }
             }else{
                 setAvatarPreview(images.avt);
                 setAvatar("");
@@ -163,7 +168,7 @@ function Signup() {
                     </button>
                 </div>
                 <div className="wrapper__form__container__bottom">
-                    <p className="wrapper__form__container__bottom__title"><div>Forget Password?</div><Link to="/password/forget" className='wrapper__form__container__bottom__title__link'>Click me</Link></p>
+                    <p className="wrapper__form__container__bottom__title"><span>Forget Password?</span><Link to="/password/forget" className='wrapper__form__container__bottom__title__link'>Click me</Link></p>
                 </div>
             </form>
             <form onSubmit={handleRegisterSubmit} className={`${slider} wrapper__form__container register`}>
@@ -196,7 +201,7 @@ function Signup() {
                     </button>
                 </div>
                 <div className="wrapper__form__container__bottom">
-                    <p className="wrapper__form__container__bottom__title"><div>Already signup?</div><span className='wrapper__form__container__bottom__title__link' onClick={loginSlider}>Login</span></p>
+                    <p className="wrapper__form__container__bottom__title"><span>Already signup?</span><span className='wrapper__form__container__bottom__title__link' onClick={loginSlider}>Login</span></p>
                 </div>
             </form>
         </div>

@@ -8,16 +8,16 @@ const cloudinary = require('cloudinary').v2;
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
     let images = [];
 
-    if(Array.isArray(req.files?.images)){
-        images = req.files?.images;
+    if(Array.isArray(req.body?.images)){
+        images = req.body?.images;
     }else{
-        images.push(req.files.images)
+        images.push(req.body.images)
     }
 
     let imagesLink = [];
 
     for (let i = 0; i < images.length; i++) {
-        const result = await cloudinary.uploader.upload(images[i].tempFilePath, {
+        const result = await cloudinary.uploader.upload(images[i], {
             upload_preset: "products",
             width: 350,
             crop: "scale",
@@ -42,7 +42,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 // Get all Product
 exports.getAllProducts = catchAsyncErrors(async (req, res) => {
 
-    const resultPerPage = 3;
+    const resultPerPage = 8;
 
     var apiFeature = new ApiFeatures(Product.find(), req.query).search().filter().pagination(resultPerPage);
     var products = await apiFeature.query;
@@ -99,11 +99,11 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
     let images = [];
 
-    if(req.files?.images){
-        if(Array.isArray(req.files?.images)){
-            images = req.files?.images;
+    if(req.body?.images){
+        if(Array.isArray(req.body?.images)){
+            images = req.body?.images;
         }else{
-            images.push(req.files?.images)
+            images.push(req.body?.images)
         }
     }
 
@@ -118,7 +118,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 
         // Upload new product images
         for (let i = 0; i < images.length; i++) {
-            const result = await cloudinary.uploader.upload(images[i].tempFilePath, {
+            const result = await cloudinary.uploader.upload(images[i], {
                 upload_preset: "products",
                 width: 350,
                 crop: "scale",
