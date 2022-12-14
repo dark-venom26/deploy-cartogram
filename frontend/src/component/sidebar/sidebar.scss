@@ -29,7 +29,7 @@
     border-radius: 0 $borderRadius $borderRadius 0;
     position: sticky;
     top: $navbarHeight;
-    height: 100%;
+    height: 100vh;
 
     @include tablet{
         position: fixed;
