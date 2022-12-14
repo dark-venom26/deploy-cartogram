@@ -1,32 +1,8 @@
+
 # CARTOGRAM
 
 This is an E-commerce web app made by using MERN Stack.
 
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/dark-venom26/Cartogram
-```
-
-Go to the project directory
-
-```bash
-  cd Cartogram
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
 
 ## API Reference
 
@@ -195,6 +171,7 @@ Start the server
 ```http
   DEL /api/v1/order/${id}
 ```
+
 ### Admin
 
 #### Create product
@@ -293,10 +270,83 @@ Start the server
 | :-------- | :------- | :------------------------- |
 | `id` | `string` | **Required**. Id of the order |
 
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`PORT`
+
+`FRONTEND_URL`
+
+`DATABASE_PASSWORD`
+
+`JWT_SECRET`
+
+`JWT_EXPIRE`
+
+`COOKIE_EXPIRE`
+
+`STRIPE_API_KEY`
+
+`STRIPE_SECRET_KEY`
+
+`SMPT_HOST`
+
+`SMPT_PORT`
+
+`SMPT_SERVICE`
+
+`SMPT_MAIL`
+
+`SMPT_PASSWORD`
+
+`CLOUDINARY_CLOUD_NAME`
+
+`CLOUDINARY_API_KEY`
+
+`CLOUDINARY_API_SECRET`
+
 
 ## Authors
 
-- [Aman Vishwakarma](https://github.com/dark-venom26/)
+- [@dark-venom26](https://github.com/dark-venom26/)
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/dark-venom26/Cartogram
+```
+
+Go to the project directory
+
+```bash
+  cd Cartogram
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run deploy
+```
+
 
 ## Support
 
